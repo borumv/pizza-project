@@ -1,0 +1,288 @@
+{
+  "types": [
+    "традиционное",
+    "тонкое"
+  ],
+  "categories": [
+    "Мясные",
+    "Вегетарианская",
+    "Гриль",
+    "Острые",
+    "Закрытые"
+  ],
+  "pizzaModelList": [
+    {
+      "id": 1,
+      "imageUrl": [
+        "https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
+      ],
+      "title": "Пепперони Фреш с перцем",
+      "types": [
+        1,
+        2
+      ],
+      "sizeAndCost": [
+        {
+          "size": 26,
+          "cost": 803
+        },
+        {
+          "size": 30,
+          "cost": 850
+        },
+        {
+          "size": 40,
+          "cost": 950
+        }
+      ],
+      "category": [
+        0
+      ],
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "imageUrl": [
+        "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/2ffc31bb-132c-4c99-b894-53f7107a1441.jpg"
+      ],
+      "title": "Сырная",
+      "types": [
+        1,
+        2
+      ],
+      "sizeAndCost": [
+        {
+          "size": 26,
+          "cost": 245
+        },
+        {
+          "size": 30,
+          "cost": 358
+        }
+      ],
+      "category": [
+        0
+      ],
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "imageUrl": [
+        "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/6652fec1-04df-49d8-8744-232f1032c44b.jpg"
+      ],
+      "title": "Цыпленок барбекю",
+      "types": [
+        2
+      ],
+      "sizeAndCost": [
+        {
+          "size": 26,
+          "cost": 295
+        },
+        {
+          "size": 30,
+          "cost": 410
+        }
+      ],
+      "category": [
+        1
+      ],
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "imageUrl": [
+        "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/af553bf5-3887-4501-b88e-8f0f55229429.jpg"
+      ],
+      "title": "Кисло-сладкий цыпленок",
+      "types": [
+        1
+      ],
+      "sizeAndCost": [
+        {
+          "size": 26,
+          "cost": 275
+        },
+        {
+          "size": 30,
+          "cost": 320
+        },
+        {
+          "size": 40,
+          "cost": 410
+        }
+      ],
+      "category": [
+        2
+      ],
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "imageUrl": [
+        "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+      ],
+      "title": "Чизбургер-пицца",
+      "types": [
+        2
+      ],
+      "sizeAndCost": [
+        {
+          "size": 26,
+          "cost": 415
+        },
+        {
+          "size": 30,
+          "cost": 480
+        },
+        {
+          "size": 40,
+          "cost": 510
+        }
+      ],
+      "category": [
+        3
+      ],
+      "rating": 5
+    },
+    {
+      "id": 6,
+      "imageUrl": [
+        "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/1e1a6e80-b3ba-4a44-b6b9-beae5b1fbf27.jpg"
+      ],
+      "title": "Крэйзи пепперони",
+      "types": [
+        1,
+        2
+      ],
+      "sizeAndCost": [
+        {
+          "size": 30,
+          "cost": 580
+        },
+        {
+          "size": 40,
+          "cost": 650
+        }
+      ],
+      "category": [
+        2
+      ],
+      "rating": 5
+    },
+    {
+      "id": 7,
+      "imageUrl": [
+        "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d2e337e9-e07a-4199-9cc1-501cc44cb8f8.jpg"
+      ],
+      "title": "Пепперони",
+      "types": [
+        1,
+        2
+      ],
+      "sizeAndCost": [
+        {
+          "size": 26,
+          "cost": 675
+        },
+        {
+          "size": 30,
+          "cost": 750
+        },
+        {
+          "size": 40,
+          "cost": 825
+        }
+      ],
+      "category": [
+        1
+      ],
+      "rating": 5
+    },
+    {
+      "id": 8,
+      "imageUrl": [
+        "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg"
+      ],
+      "title": "Маргарита",
+      "types": [
+        2
+      ],
+      "sizeAndCost": [
+        {
+          "size": 26,
+          "cost": 450
+        },
+        {
+          "size": 30,
+          "cost": 470
+        },
+        {
+          "size": 40,
+          "cost": 510
+        }
+      ],
+      "category": [
+        4
+      ],
+      "rating": 5
+    },
+    {
+      "id": 9,
+      "imageUrl": [
+        "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg"
+      ],
+      "title": "Четыре сезона",
+      "types": [
+        1
+      ],
+      "sizeAndCost": [
+        {
+          "size": 26,
+          "cost": 395
+        },
+        {
+          "size": 30,
+          "cost": 450
+        },
+        {
+          "size": 40,
+          "cost": 510
+        }
+      ],
+      "category": [
+        4
+      ],
+      "rating": 5
+    },
+    {
+      "id": 10,
+      "imageUrl": [
+        "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/30367198-f3bd-44ed-9314-6f717960da07.jpg"
+      ],
+      "title": "Овощи и грибы \uD83C\uDF31",
+      "types": [
+        1,
+        2
+      ],
+      "sizeAndCost": [
+        {
+          "size": 26,
+          "cost": 285
+        },
+        {
+          "size": 30,
+          "cost": 370
+        },
+        {
+          "size": 40,
+          "cost": 425
+        }
+      ],
+      "category": [
+        4
+      ],
+      "rating": 5
+    }
+  ]
+}
