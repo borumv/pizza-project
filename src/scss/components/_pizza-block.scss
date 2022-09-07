@@ -1,12 +1,20 @@
 @import '../variables';
 
 .pizza-block {
-  width: 280px;
+  width: 100%;
   text-align: center;
   margin-bottom: 65px;
 
-  &:not(:nth-of-type(4n)) {
-    margin-right: 35px;
+  @media (max-width: 1090px) {
+    margin-bottom: 35px;
+  }
+
+  @media (max-width: 768px) {
+    &:not(:last-of-type) {
+      border-bottom: 1px solid #efefef;
+      margin-bottom: 25px;
+      padding-bottom: 45px;
+    }
   }
 
   &__image {
@@ -42,12 +50,15 @@
         font-weight: 600;
         font-size: 14px;
         @include noselect();
-
         &.active {
           background: #ffffff;
           box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
           border-radius: 5px;
           cursor: auto;
+        }
+        &.disabled {
+          opacity: 0.4;
+          pointer-events: none;
         }
       }
     }
