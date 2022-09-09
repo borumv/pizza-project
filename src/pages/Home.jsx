@@ -9,6 +9,7 @@ import Sceleton from '../components/PizzaBlock/Sceleton'
 const Home = () =>{
   const [isLoading, setIsLoading] = React.useState(false);
   const [{categories, pizzaModelList, types}, setItems] = React.useState({categories:[], pizzaModelList:[], types:[]});
+  const [activeCategory, setActiveCategory] = React.useState(0)
 
   React.useEffect(() =>{
     fetch('http://localhost:8080/api/pizza/model/all_data')
@@ -24,7 +25,7 @@ const Home = () =>{
   return(
     <>
     <div className="content__top">
-              <Categories categories = {categories}/>
+              <Categories categories = {categories} activeCategory={activeCategory} setActiveCategory ={setActiveCategory}/>
               <Sorting/>
             </div>
             <h2 className="content__title">Все пиццы</h2>
