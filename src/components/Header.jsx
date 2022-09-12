@@ -1,7 +1,13 @@
 import logo from '../assets/img/pizza-logo.svg'
 import { Link } from 'react-router-dom'
+import SearchBlock from './SearchBlock' 
+import { SearchContext } from '../App'
+import { useContext } from 'react'
 
 export default function Header(){
+
+  const {searchValue, setSearchValue} = useContext(SearchContext)
+  
   return(
   <div className="header">
           <div className="container">
@@ -12,6 +18,7 @@ export default function Header(){
                 <p>самая вкусная пицца во вселенной</p>
               </Link>
             </div>
+            <SearchBlock/>
             <div className="header__cart">
               <Link to ="/cart" className="button button--cart">
                 <span>520 ₽</span>

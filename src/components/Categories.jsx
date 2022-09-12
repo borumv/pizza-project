@@ -1,9 +1,8 @@
 import React from 'react'
 
 export default function Categories({categories, activeCategory, setActiveCategory}) {
-  // const [activeIndex, setActiveIndex] = React.useState(0)
-  //const categories = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
-  console.log(activeCategory)
+
+  console.log(categories +  " " + activeCategory)
   return(
     <>
     <div className="categories">

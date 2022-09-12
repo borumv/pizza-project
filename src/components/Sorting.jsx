@@ -1,10 +1,10 @@
 import React from 'react'
-export default function Sorting() {
+export default function Sorting({changeValue,  setChangeValue, listValues}) {
 
 
-  const sortingList = ['популярности', 'цене', 'алфавиту']
+  console.log('sortingList - ' + listValues)
+
   const [openState, setOpenState] = React.useState(false)
-  const [selectedItem, setSelectedItem] = React.useState(0)
 
   return(
     <div className="sort">
@@ -22,15 +22,15 @@ export default function Sorting() {
                     />
                   </svg>
                   <b>Сортировка по:</b>
-                  <span onClick={() => setOpenState(!openState)}>{sortingList[selectedItem]}</span>
+                  <span onClick={() => setOpenState(!openState)}>{changeValue.name}</span>
                 </div>
                { openState && (<div className="sort__popup">
                   <ul>
-                    {sortingList.map((item, i) => { 
+                    {listValues.map((item, i) => { 
                     
                     return(
-                        <li key = {i} onClick={() => setSelectedItem(i)} className = {selectedItem === i ? 'active' : ''}>
-                          {item}
+                        <li key = {i} onClick={() => setChangeValue(item)} className = {changeValue === {item} ? 'active' : ''}>
+                          {item.name}
                         </li>
                       )
                     })}
