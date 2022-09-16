@@ -3,13 +3,13 @@ import ReactPaginate from 'react-paginate';
 import styles from './Paginator.module.scss'
 import { SearchContext } from '../../App';
 
-const Paginator = ({pageNumber, setPageNumber, countElements }) => {
+const Paginator = ({pageNumber, setPageNumber, countElements, activeCategory }) => {
   
   const {searchValue, } = React.useContext(SearchContext)
 
   React.useEffect(()=>{
       setPageNumber(0)
-  },[searchValue])
+  },[searchValue, activeCategory])
 
   return (
     <div>

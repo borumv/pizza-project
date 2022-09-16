@@ -1,8 +1,28 @@
 import React from 'react'
-export default function Sorting({changeValue,  setChangeValue, listValues}) {
+import { useSelector, useDispatch } from 'react-redux'
+
+import {setOrder} from '../redux/slices/filterSlice'
 
 
-  console.log('sortingList - ' + listValues)
+
+export default function Sorting() {
+
+  const changeValue = useSelector((state) => state.filterReducer.sort)
+  const dispatch = useDispatch()
+
+  const onChangeValue = (item) =>{
+    dispatch(setOrder(item))
+  }
+
+  const listValues = [
+    {name:'популярности по возрастанию', sortProperty: 'rating'},
+    {name:'цене по возрастанию', sortProperty: 'price'}, 
+    {name:'алфавиту по возрастанию', sortProperty: 'title'},
+    {name:'популярности по убыванию', sortProperty: '-rating'},
+    {name:'цене по убыванию', sortProperty: '-price'}, 
+    {name:'алфавиту по убыванию', sortProperty: '-title'}
+  ]
+
 
   const [openState, setOpenState] = React.useState(false)
 
@@ -29,7 +49,7 @@ export default function Sorting({changeValue,  setChangeValue, listValues}) {
                     {listValues.map((item, i) => { 
                     
                     return(
-                        <li key = {i} onClick={() => setChangeValue(item)} className = {changeValue === {item} ? 'active' : ''}>
+                        <li key = {i} onClick={() => onChangeValue(item)} className = {changeValue === {item} ? 'active' : ''}>
                           {item.name}
                         </li>
                       )

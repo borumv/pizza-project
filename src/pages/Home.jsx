@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { useSelector, useDispatch } from 'react-redux'
+import { setActiveCategory } from '../redux/slices/filterSlice'
 
 import Pizza from '../components/PizzaBlock';
 import Categories from '../components/Categories';
@@ -9,28 +10,29 @@ import Sceleton from '../components/PizzaBlock/Sceleton'
 import { SearchContext } from '../App';
 import Paginator from '../components/Paginator';
 
+
 const Home = () =>{
+
+  const activeCategory = useSelector((state) => state.filterReducer.activeCategory)
+  const sortingValue = useSelector((state) => state.filterReducer.sort)
+  const dispatch = useDispatch()
+  const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
+
   const [pageNumber, setPageNumber] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [{categories, pizzaModelList, types, count}, setItems] = React.useState({categories:[], pizzaModelList:[], types:[], count:0});
-  const [activeCategory, setActiveCategory] = React.useState(0)
+  const [{ pizzaModelList, types, count}, setItems] = React.useState({categories:[], pizzaModelList:[], types:[], count:0});
   const {searchValue, } = React.useContext(SearchContext)
-  const sortingList = [
-    {name:'популярности по возрастанию', sortProperty: 'rating'},
-    {name:'цене по возрастанию', sortProperty: 'price'}, 
-    {name:'алфавиту по возрастанию', sortProperty: 'title'},
-    {name:'популярности по убыванию', sortProperty: '-rating'},
-    {name:'цене по убыванию', sortProperty: '-price'}, 
-    {name:'алфавиту по убыванию', sortProperty: '-title'}
-  ]
-  const [sortingValue, setSortingValue] = React.useState({name:'популярности', sortProperty: 'rating'});
   
   const limit = 3;
-  const category = activeCategory > 0 ? `category_id=${activeCategory + 1}&`:''
+  const category = activeCategory > 0 ? `category_id=${activeCategory}&`:'';
   const orderingValue = `orderingValue=${sortingValue.sortProperty.replace('-','')}`;
   const orderingType = `&ordering_type=${sortingValue.sortProperty.includes('-')? 'desc':'asc'}`;
   const searchValues = `&search_value=${searchValue}`
 
+  
+  const onChangeCategory = (index) => {
+    dispatch(setActiveCategory(index))
+  }
 
   React.useEffect(() =>{
     setIsLoading(false)
@@ -41,14 +43,14 @@ const Home = () =>{
                 setIsLoading(true)})
 
     .catch(err => console.log("catched! ",  err))
-  },[activeCategory, sortingValue, searchValue, pageNumber]);
+  },[activeCategory, searchValue, pageNumber, sortingValue, category, orderingValue, orderingType, searchValues]);
 
 
   return(
     <>
     <div className="content__top">
-              <Categories categories = {categories} activeCatego ry={activeCategory} setActiveCategory ={setActiveCategory}/>
-              <Sorting listValues = {sortingList} changeValue = {sortingValue} setChangeValue= {setSortingValue}/>
+              <Categories categories = {categories} activeCategory={activeCategory} setActiveCategory ={onChangeCategory}/>
+              <Sorting />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">  
@@ -56,7 +58,7 @@ const Home = () =>{
               ? pizzaModelList.map(( item, index) => {return (<Pizza key={index} {...item}  types = {types}/>)})
               : [...new Array(6)].map((_, index) => {return (<Sceleton key={index}/>)})}                 
    </div>
-    <Paginator pageNumber = {pageNumber} setPageNumber = {setPageNumber} countElements = {count / limit} />
+    <Paginator pageNumber = {pageNumber} setPageNumber = {setPageNumber} countElements = {count / limit} activeCategory ={activeCategory}/>
    </>
   )
 }
