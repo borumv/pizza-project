@@ -1,18 +1,33 @@
 import styles from './SearchBlock.module.scss'
 import React from 'react'
-import { useContext } from 'react'
-import { SearchContext } from '../../App'
+import {useDispatch } from 'react-redux'
+import {setSearchValue} from '../../redux/slices/filterSlice'
+import { debounce } from "lodash"
 
 const SearchBlock = () => {
-  const {searchValue, setSearchValue} = useContext(SearchContext)
+ // const {searchValue, setSearchValue} = useContext(SearchContext)
+ const dispatch = useDispatch()
+  const [searchValues, setSearchValues] = React.useState('');
+  const inputRef = React.useRef();
+  
   const onClickClear = () => {
-    setSearchValue('');
-    
+    inputRef.current.focus()
+    setSearchValues('');  
+    dispatch(setSearchValue(''))
   };
-  const onChangeInput = (event) => {
-    setSearchValue(event.target.value);
 
+
+  const onChangeInput = (event) => {
+    console.log('inputRef - ', inputRef)
+    setSearchValues(event.target.value);
+    debounceFn(event.target.value);
   };
+
+  const debounceFn = React.useCallback(
+    debounce((str)=>{
+      dispatch(setSearchValue(str))
+    }, 500),[]
+  )
 
   return (
     <div className={styles.root}>
@@ -50,13 +65,13 @@ const SearchBlock = () => {
       />
     </svg>
     <input
-      // ref={inputRef}
-      value={searchValue}
+      ref={inputRef}
+      value={searchValues}
       onChange={onChangeInput}
       className={styles.input}
       placeholder="Поиск пиццы..."
     />
-    {searchValue && (
+    {searchValues && (
       <svg
         onClick={onClickClear}
         className={styles.clearIcon}

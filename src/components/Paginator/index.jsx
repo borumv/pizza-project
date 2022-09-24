@@ -20,7 +20,7 @@ const Paginator = ({pageNumber, setPageNumber, countElements, activeCategory }) 
               previousLabel="<"
               onPageChange={e => {setPageNumber(e.selected)
               console.log(e)}}
-              pageRangeDisplayed={5}
+              pageRangeDisplayed={4}
               pageCount={countElements}
               forcePage={pageNumber}
 

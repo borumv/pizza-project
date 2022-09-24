@@ -1,10 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import filterReducer from './slices/filterSlice'
-import countReducer from './slices/counterSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import filterReducer from './slices/filterSlice';
+import cartReducer from './slices/cartSlice';
 
 export const store = configureStore({
   reducer: {
-    countReducer,
-    filterReducer
+    filterReducer,
+    cartReducer,
   },
-})
+});
