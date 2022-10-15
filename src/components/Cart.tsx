@@ -2,8 +2,19 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement, removeItem } from '../redux/slices/cartSlice';
 
-export const Cart = (data) => {
-  console.log('data -- ', data);
+export type ICart = {
+  id: number;
+  title: string;
+  type: string;
+  size: number;
+  cost: number;
+  count: number;
+};
+export type ICartProps = {
+  data: ICart;
+};
+
+export const Cart: React.FC<ICartProps> = (data) => {
   const { title, type, size, cost, count } = data.data;
   const dispatch = useDispatch();
   return (
@@ -23,7 +34,8 @@ export const Cart = (data) => {
           </p>
         </div>
         <div className="cart__item-count">
-          <div
+          <button
+            disabled={count === 1}
             onClick={() => dispatch(decrement(data))}
             className="button button--outline button--circle cart__item-count-minus">
             <svg
@@ -41,7 +53,7 @@ export const Cart = (data) => {
                 fill="#EB5A1E"
               />
             </svg>
-          </div>
+          </button>
           <b>{count}</b>
           <div
             onClick={() => dispatch(increment(data))}

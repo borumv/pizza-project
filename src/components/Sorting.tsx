@@ -2,21 +2,37 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { setOrder } from '../redux/slices/filterSlice';
+import { sortSelector } from '../redux/slices/filterSlice';
 
-export const listValues = [
-  { name: 'популярности по возрастанию', sortProperty: 'rating' },
-  { name: 'цене по возрастанию', sortProperty: 'price' },
-  { name: 'алфавиту по возрастанию', sortProperty: 'title' },
-  { name: 'популярности по убыванию', sortProperty: '-rating' },
-  { name: 'цене по убыванию', sortProperty: '-price' },
-  { name: 'алфавиту по убыванию', sortProperty: '-title' },
+export enum Sort {
+  RATING_DESC = 'rating',
+  RATING_ASC = '-rating',
+  TITLE_DESC = 'title',
+  TITLE_ASC = '-title',
+  PRICE_DESC = 'price',
+  PRICE_ASC = '-price',
+}
+export type SortProperty = {
+  name: string;
+  sortProperty: Sort;
+};
+
+export const listValues: SortProperty[] = [
+  { name: 'популярности по возрастанию', sortProperty: Sort.RATING_ASC },
+  { name: 'цене по возрастанию', sortProperty: Sort.PRICE_ASC },
+  { name: 'алфавиту по возрастанию', sortProperty: Sort.TITLE_ASC },
+  { name: 'популярности по убыванию', sortProperty: Sort.RATING_DESC },
+  { name: 'цене по убыванию', sortProperty: Sort.PRICE_DESC },
+  { name: 'алфавиту по убыванию', sortProperty: Sort.TITLE_DESC },
 ];
 
-export default function Sorting({ openState, setOpenState, sortingRef }) {
-  const changeValue = useSelector((state) => state.filterReducer.sort);
+export const Sorting: React.FC<any> = ({ openState, setOpenState, sortingRef }) => {
+  const sortState = useSelector(sortSelector);
+  console.log('sortstate - ', sortState);
+  const changeValue: SortProperty = sortState.sort;
   const dispatch = useDispatch();
 
-  const onChangeValue = (item) => {
+  const onChangeValue = (item: SortProperty) => {
     dispatch(setOrder(item));
   };
 
@@ -40,12 +56,12 @@ export default function Sorting({ openState, setOpenState, sortingRef }) {
       {openState && (
         <div className="sort__popup">
           <ul>
-            {listValues.map((item, i) => {
+            {listValues.map((item, i: number) => {
               return (
                 <li
                   key={i}
                   onClick={() => onChangeValue(item)}
-                  className={changeValue === { item } ? 'active' : ''}>
+                  className={changeValue.sortProperty === item.sortProperty ? 'active' : ''}>
                   {item.name}
                 </li>
               );
@@ -55,4 +71,4 @@ export default function Sorting({ openState, setOpenState, sortingRef }) {
       )}
     </div>
   );
-}
+};

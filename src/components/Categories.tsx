@@ -4,20 +4,20 @@ import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setActiveCategory } from '../redux/slices/filterSlice';
 
-export default function Categories({ categories }) {
+type ICategoriesProps = {
+  categories: string[];
+  onchangeCategory: (index: number) => void;
+};
+
+export const Categories: React.FC<ICategoriesProps> = ({ categories, onchangeCategory }) => {
   const [activeValue, setActiveValue] = React.useState(0);
-  const activeCategory = useSelector((state) => state.filterReducer.activeCategory);
-  const dispatch = useDispatch();
+  const activeCategory = useSelector((state: any) => state.filterReducer.activeCategory);
 
   React.useEffect(() => {
     setActiveValue(activeCategory);
   }, [activeCategory]);
 
-  const onChangeCategory = useCallback((index) => {
-    dispatch(setActiveCategory(index));
-  }, []);
-
-  const classnNameCreator = (index) => {
+  const classnNameCreator = (index: number) => {
     if (Number(activeValue) === index) {
       return 'active';
     } else {
@@ -29,12 +29,12 @@ export default function Categories({ categories }) {
     <>
       <div className="categories">
         <ul>
-          {categories.map((item, index) => {
+          {categories.map((item: string, index: number) => {
             return (
               <li
                 key={index}
                 onClick={() => {
-                  onChangeCategory(index);
+                  onchangeCategory(index);
                 }}
                 className={classnNameCreator(index)}>
                 {item}
@@ -45,4 +45,4 @@ export default function Categories({ categories }) {
       </div>
     </>
   );
-}
+};

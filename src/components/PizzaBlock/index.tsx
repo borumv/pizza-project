@@ -1,15 +1,23 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem } from '../../redux/slices/cartSlice';
+import { IPizza } from '../../redux/slices/pizzaSlice';
 
-export default function Pizza({ id, title, sizeAndCost, imageUrl, types }) {
-  //const [count, setCount] = React.useState(0);
+type IPizzaProps = {
+  id: number;
+  title: string;
+  imageUrl: string[];
+  sizeAndCost: [{ size: number; cost: number }];
+  types: string[];
+};
+
+export const Pizza: React.FC<IPizza> = ({ id, title, sizeAndCost, imageUrl, types }) => {
   const [indexChangedSize, setindexChangedSize] = React.useState(0);
   const [indexType, setIndexType] = React.useState(0);
-  const items = useSelector((state) => state.cartReducer.items);
+  const items = useSelector((state: any) => state.cartReducer.items);
   let count = items
-    .filter((item) => item.id === id)
-    .reduce((prev, next) => {
+    .filter((item: { id: number }) => item.id === id)
+    .reduce((prev: number, next: { count: number }) => {
       return prev + next.count;
     }, 0);
 
@@ -71,9 +79,9 @@ export default function Pizza({ id, title, sizeAndCost, imageUrl, types }) {
             />
           </svg>
           <span>Добавить</span>
-          <i>{count}</i>
+          {count > 0 && <i>{count}</i>}
         </button>
       </div>
     </div>
   );
-}
+};

@@ -43,6 +43,17 @@
     padding: 0;
     border-width: 2px;
   }
+  &:disabled {
+    opacity: 0.3;
+    transform: none;
+    border-color: #b6b2b1;
+    &:active {
+      transform: none;
+    }
+    &:hover {
+      background-color: transparent;
+    }
+  }
 
   &--black {
     background-color: $black;
@@ -93,6 +104,10 @@
     background-color: rgba(255, 255, 255, 0.25);
     margin-left: 14px;
     margin-right: 14px;
+    &:hover {
+      background-color: #fff;
+      color: black;
+    }
   }
 
   &--add {

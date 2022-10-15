@@ -1,6 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ICart, ICartProps } from '../../components/Cart';
 
-const initialState = {
+type ICartSlice = {
+  items: ICart[];
+  totalCost: number;
+  totalCount: number;
+};
+
+const initialState: ICartSlice = {
   items: [],
   totalCost: 0,
   totalCount: 0,
@@ -11,7 +18,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      const haveItem = (item, action) => {
+      const haveItem = (item: ICart, action: any) => {
         return (
           item.title === action.title && item.size === action.size && item.type === action.type
         );
@@ -46,7 +53,9 @@ export const cartSlice = createSlice({
           action.payload.data.type === obj.type &&
           action.payload.data.size === obj.size,
       );
-      item.count = item.count + 1;
+      if (item) {
+        item.count = item.count + 1;
+      }
       state.totalCount = state.items.reduce((prev, next) => {
         return prev + next.count;
       }, 0);
@@ -54,14 +63,16 @@ export const cartSlice = createSlice({
         return o1 + o2.cost * o2.count;
       }, 0);
     },
-    decrement: (state, action) => {
+    decrement: (state, action: PayloadAction<ICartProps>) => {
       const item = state.items.find(
         (obj) =>
           action.payload.data.id === obj.id &&
           action.payload.data.type === obj.type &&
           action.payload.data.size === obj.size,
       );
-      item.count = item.count - 1;
+      if (item) {
+        item.count = item.count - 1;
+      }
       state.totalCount = state.items.reduce((prev, next) => {
         return prev + next.count;
       }, 0);

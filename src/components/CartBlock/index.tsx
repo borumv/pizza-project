@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { clearCart } from '../../redux/slices/cartSlice';
 import { EmptyCart } from '../EmptyCart';
 
-const CartBlock = () => {
-  const items = useSelector((state) => state.cartReducer.items);
-  const totalCost = useSelector((state) => state.cartReducer.totalCost);
-  const totalCount = useSelector((state) => state.cartReducer.totalCount);
+const CartBlock: React.FC = () => {
+  const items = useSelector((state: any) => state.cartReducer.items);
+  const totalCost = useSelector((state: any) => state.cartReducer.totalCost);
+  const totalCount = useSelector((state: any) => state.cartReducer.totalCount);
   const dispatch = useDispatch();
 
   if (totalCount === 0) {
@@ -90,7 +90,7 @@ const CartBlock = () => {
           </div>
         </div>
         <div className="content__items">
-          {items.map((item, index) => {
+          {items.map((item: any, index: number) => {
             console.log(item);
             return <Cart key={index} data={item} />;
           })}
