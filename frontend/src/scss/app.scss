@@ -12,13 +12,26 @@ body {
   }
 }
 
+// .wrapper {
+//   width: calc(100vw - 100px);
+//   height: 100%;
+//   background-color: #fff;
+//   margin: 0 auto;
+//   border-radius: 10px;
+//   max-width: 1400px;
+//   @media (max-width: 768px) {
+//     width: calc(100% - 40px);
+//   }
+// }
 .wrapper {
   width: calc(100vw - 100px);
   height: 100%;
-  background-color: #fff;
   margin: 0 auto;
   border-radius: 10px;
   max-width: 1400px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 1));
+  /* Adjust the gradient angle and opacity values as needed */
+
   @media (max-width: 768px) {
     width: calc(100% - 40px);
   }
@@ -83,6 +96,18 @@ body {
       grid-template-columns: 1fr;
     }
   }
+}
+/* Add the following CSS to your stylesheet */
+.wrapper .header .container .header__logo img {
+  /* Set the rotation origin to the center of the image */
+  transform-origin: center;
+  /* Apply a 360 degrees rotation on hover */
+  transition: transform 1s ease;
+}
+
+.wrapper .header .container .header__logo.logo-rotate img {
+  /* Apply the rotation effect */
+  transform: rotate(360deg);
 }
 
 .cart {
