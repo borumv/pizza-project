@@ -12,18 +12,27 @@ import org.springframework.context.annotation.Scope;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 
+
 @Configuration
 public class BlazePersistenceConfiguration {
 
     @PersistenceUnit
     private EntityManagerFactory entityManagerFactory;
 
+    /**
+     * Creates and configures the CriteriaBuilderFactory bean.
+     *
+     * @return The CriteriaBuilderFactory bean used for building criteria queries.
+     */
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
     @Lazy(false)
     public CriteriaBuilderFactory createCriteriaBuilderFactory() {
+
+        // Create a new CriteriaBuilderConfiguration using Blaze-Persistence's default configuration.
         CriteriaBuilderConfiguration config = Criteria.getDefault();
-        // do some configuration
+
+        // Use the EntityManagerFactory to create the CriteriaBuilderFactory.
         return config.createCriteriaBuilderFactory(entityManagerFactory);
     }
 }
