@@ -44,7 +44,35 @@ DROP TABLE IF EXISTS pizzes;
 -- Table structure for categories
 -- ----------------------------
 DROP TABLE IF EXISTS categories;
--- ...
+
+DROP TABLE IF EXISTS orders CASCADE ;
+
+DROP TABLE IF EXISTS order_pizzas;
+
+-- ----------------------------
+-- Table structure for orders
+-- ----------------------------
+CREATE TABLE orders (
+                        order_id SERIAL PRIMARY KEY,
+                        date DATE,
+                        final_price FLOAT,
+                        phone_number varchar(64),
+                        status VARCHAR(50)
+);
+
+-- ----------------------------
+-- Table structure for order_pizzas
+-- ----------------------------
+
+CREATE TABLE order_pizzas (
+                              id SERIAL PRIMARY KEY,
+                              order_id BIGINT,
+                              pizzaId INT,
+                              typeId VARCHAR(64),
+                              size INT,
+                              count INT
+);
+
 
 -- ----------------------------
 -- Table structure for pizzes_img

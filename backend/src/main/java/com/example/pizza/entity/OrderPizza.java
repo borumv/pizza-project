@@ -1,5 +1,6 @@
 package com.example.pizza.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,7 +8,19 @@ import javax.persistence.*;
 @Entity
 @Table(name = "order_pizzas")
 @Data
+
 public class OrderPizza {
+
+    @Builder
+    public OrderPizza(Long id, Order order, int pizzaId, String type, int size, int count) {
+
+        this.id = id;
+        this.order = order;
+        this.pizzaId = pizzaId;
+        this.type = type;
+        this.size = size;
+        this.count = count;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +40,8 @@ public class OrderPizza {
     private int size;
     private int count;
 
+    public OrderPizza() {
+
+
+    }
 }
