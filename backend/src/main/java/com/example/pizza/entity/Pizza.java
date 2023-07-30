@@ -52,6 +52,7 @@ public class Pizza implements HaveModel<PizzaModel> {
 
     @Override
     public PizzaModel getModel() {
+
         return new PizzaModel();
     }
 }
