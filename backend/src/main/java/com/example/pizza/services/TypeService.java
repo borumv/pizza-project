@@ -8,12 +8,16 @@ import java.util.List;
 
 @Service
 public class TypeService {
-    private TypeRepo typeRepo;
+
+    private final TypeRepo typeRepo;
 
     public TypeService(TypeRepo typeRepo) {
+
         this.typeRepo = typeRepo;
     }
-    public List<PizzaType> getAll(){
+
+    public List<PizzaType> getAll() {
+
         return typeRepo.findAll();
     }
 }

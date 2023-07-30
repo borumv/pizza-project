@@ -8,15 +8,17 @@ import java.util.List;
 
 @Service
 public class CategoryService {
-    private CategoryRepo categoryRepo;
+
+    private final CategoryRepo categoryRepo;
 
     public CategoryService(CategoryRepo categoryRepo) {
+
         this.categoryRepo = categoryRepo;
     }
-    public List<Category> getAll(){
+
+    public List<Category> getAll() {
+
         return categoryRepo.findAll();
     }
-
-
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.Table;
 @Table(name = "types")
 @Data
 public class PizzaType {
+
     @Id
     private int id;
 

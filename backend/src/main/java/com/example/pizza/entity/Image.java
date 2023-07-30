@@ -21,6 +21,4 @@ public class Image {
     @JsonIgnore
     private Pizza pizza;
 
-
-
 }

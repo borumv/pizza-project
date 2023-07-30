@@ -15,5 +15,6 @@ public interface ExCustomRepository<Pizza, P extends EntityPathBase<Pizza>, ID e
 
     @Override
     default void customize(QuerydslBindings bindings, P root) {
+
     }
 }

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { setFilters } from '../redux/slices/filterSlice';
-import { fetchPizza, Status } from '../redux/slices/pizzaSlice';
+import { fetchPizza, IPizza, Status } from '../redux/slices/pizzaSlice';
 import { setActiveCategory } from '../redux/slices/filterSlice';
 import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ import { sortingValuesSelector } from '../redux/slices/filterSlice';
 import Paginator from '../components/Paginator';
 import { useAppDispatch } from '../redux/hook';
 import { RootState } from '../redux/store';
-const Pizza = React.lazy(() => import('../components/PizzaBlock'));
+import { Pizza } from '../components/PizzaBlock';
 
 type IPopUp = MouseEvent & {
   path: Node[];

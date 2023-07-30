@@ -1,6 +1,5 @@
 package com.example.pizza.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -11,9 +10,9 @@ import java.util.List;
 @Table(name = "sizes")
 @Data
 public class Size {
+
     @Id
     private int id;
-
 
     @Column(name = "size")
     private int size;
@@ -21,10 +20,8 @@ public class Size {
     @JsonIgnore
     @OneToMany(mappedBy = "size")
     private List<PizzaSizeCostInfo> types;
-
 //    @JsonIgnore
 //    @ManyToMany(mappedBy = "sizes")
 //    List<Pizza> pizzaList;
-
 
 }

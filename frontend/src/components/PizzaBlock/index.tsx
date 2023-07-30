@@ -11,7 +11,7 @@ type IPizzaProps = {
   types: string[];
 };
 
-export const Pizza: React.FC<IPizza> = ({ id, title, sizeAndCost, imageUrl, types }) => {
+export const Pizza: React.FC<IPizzaProps> = ({ id, title, sizeAndCost, imageUrl, types }) => {
   const [indexChangedSize, setindexChangedSize] = React.useState(0);
   const [indexType, setIndexType] = React.useState(0);
   const items = useSelector((state: any) => state.cartReducer.items);

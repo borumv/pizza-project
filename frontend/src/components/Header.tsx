@@ -2,21 +2,38 @@ import logo from '../assets/img/pizza-logo.svg';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SearchBlock from './SearchBlock';
 import { useSelector, useDispatch } from 'react-redux';
-import React from 'react';
+import React, { useState } from 'react';
 
 export const Header: React.FC = () => {
   const totalCost = useSelector((state: any) => state.cartReducer.totalCost);
   const totalCount = useSelector((state: any) => state.cartReducer.totalCount);
   const location = useLocation();
+  // Add a state to hold the current color of the logo
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
 
+  // Function to handle the mouse enter event
+  const handleMouseEnter = () => {
+    setIsLogoHovered(true);
+  };
+
+  // Function to handle the mouse leave event
+  const handleMouseLeave = () => {
+    setIsLogoHovered(false);
+  };
   return (
     <div className="header">
       <div className="container">
-        <div className="header__logo">
-          <img width="38" src={logo} alt="Pizza logo" />
+        <div className={`header__logo ${isLogoHovered ? 'logo-rotate' : ''}`}>
+          <img
+            // className={`${isLogoHovered ? 'logo-rotate' : ''}`}
+            width="38"
+            src={logo}
+            alt="Pizza logo"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          />
           <Link to="/">
-            <h1>React Pizza</h1>
-            <p>самая вкусная пицца во вселенной</p>
+            <h1>Pizza Project</h1>
           </Link>
         </div>
         {location.pathname !== '/cart' && <SearchBlock />}

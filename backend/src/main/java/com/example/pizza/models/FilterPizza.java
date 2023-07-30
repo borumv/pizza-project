@@ -8,15 +8,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class FilterPizza {
+
     int categoryId;
     String orderValue;
 
-
     public FilterPizza(int category_id) {
+
         this.categoryId = category_id;
     }
 
     public FilterPizza(String ordering) {
+
         this.orderValue = ordering;
     }
 }

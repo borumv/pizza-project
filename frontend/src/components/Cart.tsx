@@ -10,6 +10,7 @@ export type ICart = {
   cost: number;
   count: number;
 };
+
 export type ICartProps = {
   data: ICart;
 };

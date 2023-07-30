@@ -9,28 +9,23 @@ import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-
 @Component
 public class QueryFactory {
 
     @PersistenceContext
     private EntityManager em;
 
-    @Autowired
-    CriteriaBuilderFactory cbf;
-
-
-//    public BlazeJPAQueryFactory getBlazeJpaQueryFactory(){
-//        return new BlazeJPAQueryFactory(em,cbf);
-//    }
 
     public JPAQueryFactory getQueryFactory() {
+
         return queryFactory;
     }
+
     private JPAQueryFactory queryFactory;
 
     @PostConstruct
     public void init() {
+
         queryFactory = new JPAQueryFactory(em);
 
     }

@@ -9,16 +9,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 
 @Configuration
 public class BlazePersistenceConfiguration {
-//
-//    @PersistenceUnit
-//    private EntityManagerFactory entityManagerFactory;
-    @PersistenceContext
-    private EntityManager em;
+
+    @PersistenceUnit
+    private EntityManagerFactory entityManagerFactory;
 
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
@@ -26,6 +24,7 @@ public class BlazePersistenceConfiguration {
     public CriteriaBuilderFactory createCriteriaBuilderFactory() {
         CriteriaBuilderConfiguration config = Criteria.getDefault();
         // do some configuration
-        return config.createCriteriaBuilderFactory(em.getEntityManagerFactory());
+        return config.createCriteriaBuilderFactory(entityManagerFactory);
     }
 }
+
