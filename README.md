@@ -9,7 +9,7 @@ This full-stack project is an imitation of an online pizza shop, providing vario
 - [Technologies Used](#technologies-used)
 - [Project Roadmap and Issues](#Project-Roadmap-and-Issues)
   - [Current Issues](#Current-Issues)
-- [Getting Started](#getting started)
+- [Getting Started](#getting-started)
     - [Installation](#installation)
     - [Configuration](#configuration)
     - [Running the Application](#Running-the-Application)
@@ -75,6 +75,22 @@ Access the application by visiting `http://localhost:3000` in your web browser.
 
 ## 📝 API Documentation 📝
 ### Endpoints
+
+
+#### Pizza Controller
+| Endpoint                                  | Method | Parameters                                                                                                                                                                                   | Description                                                                                                                                      |
+|-------------------------------------------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| `/api/pizza/model/all`                   | GET    | None                                                                                                                                                                                         | Retrieves a list of `PizzaModel` objects representing all available pizzas.                                                                     |
+| `/api/pizza/types`                       | GET    | None                                                                                                                                                                                         | Retrieves a list of strings representing the descriptions of all pizza types.                                                                    |
+| `/api/pizza/categories`                  | GET    | None                                                                                                                                                                                         | Retrieves a list of strings representing the names of all pizza categories.                                                                     |
+| `/api/pizza/model/all_pizzes`            | GET    | - `category_id` (optional): The ID of the pizza category.<br>- `orderingValue` (optional): The value to order the pizzas by (e.g., price, rating).<br>- `ordering_type` (optional): The ordering type (ascending or descending).<br>- `search_value` (optional): The search value to filter pizzas by title. | Retrieves an `ExportDataPizzaModel` object containing pizza types, categories, and a list of pizza models.                                         |
+| `/api/pizza/model/only_pizzes_page={page}limit={limit}` | GET    | - `category_id` (optional): The ID of the pizza category.<br>- `orderingValue` (optional): The value to order the pizzas by (e.g., price, rating).<br>- `ordering_type` (optional): The ordering type (ascending or descending).<br>- `search_value` (optional): The search value to filter pizzas by title.<br>- `page`: The page number for pagination.<br>- `limit`: The maximum number of items per page. | Retrieves a `PageableModel<PizzaModel, Pizza>` object containing pizza models with pagination information. |
+
+#### Order Controller
+
+| Endpoint                   | Method | Parameters                      | Description                                                                                                                                                              |
+|----------------------------|--------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `/api/order`               | POST   | - `orderPizza`: The OrderModel object containing the details of the order. | Register a new order with the provided order data. Returns a boolean value indicating the success or failure of the order registration.                           |
 
 ## User Interface Overview
 
