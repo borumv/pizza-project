@@ -1,8 +1,7 @@
 # Pizza-shop: Full-Stack Spring Boot and React Application
 
 ## Overview
-A comprehensive full-stack web application built using Spring Boot for the backend and React for the frontend. In this project, I tried to implement a table view and the ability to process information using tables.
-
+This full-stack project is an imitation of an online pizza shop, providing various filtering options and order placement functionality. The backend is developed using Spring Boot, while the frontend is built with React. The project aims to simulate a seamless pizza ordering experience with extensive filtering capabilities.
 
 ## Table of Contents
 - [Project Overview](#overview)
@@ -17,62 +16,64 @@ A comprehensive full-stack web application built using Spring Boot for the backe
 - [User Interface Overview](#user interface overview)
 
 ## Features
-- User authentication and authorization. With different roles and permissions (the same Roles can have different permissions)
-- CRUD operations for managing data
-- Table view of data
-- Custom validation logic
+
+- Pizza Selection
+- Filtering Options
+- Order Placement
+- Query-DSL Integration
+- Redux-Toolkit State Management
 
 ## Technologies Used
 - List the technologies and tools used in your project. For example:
     - Backend:
-        - Spring Boot
-        - Spring Security (JWT)
+        - Spring-boot
+        - Query-DSL (with Blazebit)
         - Hibernate
-        - PostgreSQL
-        - Flyway migration
+        - liquibase migration
+        - H2 (for tests)
     - Frontend:
-        - React
-        - DevExpress
+        - React (TypeScript)
+        - Redux-Toolkit
+        - Debounce
 
 ## Project Roadmap and Issues
 
 ### Current Issues
-📌 Еhe frontend of the application lacks proper exception handling, which leads to poor user experience when unexpected errors occur.
+Currently, the project covers the basic features of an online pizza shop. However, there are several potential areas of improvement and expansion, such as:
 
-### Refactoring and Optimization
+1. **User Authentication**: Implementing user authentication and accounts to handle personalized order history and preferences.
+2. **Cart Page**: Improvement *`OrderPopUp`* element after payment processing
 
-📌 Rewrite State Manager to Redux - Currently, the state management in the frontend is done using `useContext`, which can lead to performance issues and complex code. We should refactor the state management to use Redux for better organization and scalability.
-
-📌 Frontend Code Refactoring - Refactor frontend code to improve maintainability and reduce spaghetti  code O-o.
 
 ## Getting Started
-To get started with the Full-Stack Spring Boot and React Application, follow the steps below:
-### Installation
-Before running the application, make sure you have the following installed on your system:
-1. **Java Development Kit (JDK)**: Ensure you have Java 11 or later installed
-2. **Node.js**: Install Node.js, which includes npm (Node Package Manager)
-3. **PostgreSQL Database**: Install PostgreSQL on your system, and set up a database for the application
-4. Clone the repository to your local machine using Git:
-```bash
-git clone https://github.com/your-username/fullstack-spring-react.git
-cd fullstack-spring-react
-```
+Follow these steps to get the project up and running on your local machine.
 
-### Configuration
-2.Create an `application-local.properties` file in the `resources` folder and write the following parameters in it
+## Installation
 
-```properties
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-```
+1. Clone the repository: `https://github.com/borumv/pizza-project.git`
 
-3. Install frontend dependencies and build the React application:
-```bash
-cd frontend
-npm install
-npm run build
-cd ..
-```
+## Configuration
+
+1. Backend Configuration:
+
+    - Navigate to the backend directory: `cd backend`
+    - Configure the database connection in `application.properties`.
+    - Customize any other required configurations.
+2. Frontend Configuration:
+
+    - Navigate to the frontend directory: `cd frontend`
+    - Update the API endpoint in the configuration file if needed.
+
+## Running the Application
+
+1. Backend:
+    - Build and run the Spring Boot application.
+2. Frontend:
+
+    - Install dependencies: `npm install`
+    - Start the development server: `npm start`
+
+Access the application by visiting `http://localhost:3000` in your web browser.
 
 ### Running the Application
 
