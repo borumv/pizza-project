@@ -94,4 +94,15 @@ Access the application by visiting `http://localhost:3000` in your web browser.
 
 ## User Interface Overview
 
+#### Placing an order
+
+https://github.com/borumv/pizza-project/assets/86356857/dd628273-357c-46ea-a42b-83a5a2348a92
+
+
+#### Filtration
+
+
+https://github.com/borumv/pizza-project/assets/86356857/1c4fddd6-ff55-4104-b73e-c9dc5f6aea68
+
+
 
